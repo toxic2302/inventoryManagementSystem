@@ -1,5 +1,8 @@
 # Inventory Management System
 
+[![Default Project](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/dtn8po/main&style=for-the-badge&logo=cypress)](https://cloud.cypress.io/projects/dtn8po/runs)
+[![Default Project](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/count/dtn8po/main&style=for-the-badge&logo=cypress)](https://cloud.cypress.io/projects/dtn8po/runs)
+
 ---
 ## Description
 
