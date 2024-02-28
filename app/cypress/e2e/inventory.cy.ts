@@ -4,8 +4,12 @@ describe('Items', () => {
     cy.visit('/inventory')
   });
 
-  /*it('add button should exist', () => {
+  it('add button should exist', () => {
     cy.get('#add').should('exist');
+  });
+
+  /*it('should have an item table', () => {
+    cy.get('#inventoryTable').should('exist');
   });*/
 
   /*it('should add a new item', () => {
@@ -16,13 +20,13 @@ describe('Items', () => {
   });
 
   it('should edit a item', () => {
-    cy.get('a').last().click();
+    cy.get('#editItem').click();
     cy.get('#name').should('have.value', 'Test Item');
     cy.get('#cancel').click();
   });
 
   it('should delete a item', () => {
-    cy.get('button').last().click();
+    cy.get('#deleteItem').click();
     cy.on('window:confirm', () => true);
     cy.get('.alert-success').should('exist');
   });*/

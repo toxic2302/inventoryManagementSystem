@@ -21,9 +21,9 @@
     </svg>
   </a>
   @if (user) {
-    <a mat-button color="secondary" (click)="auth.logout()">Logout</a>
+    <a mat-button color="secondary" (click)="auth.logout()" id="logout">Logout</a>
   } @else {
-    <a mat-button color="secondary" (click)="auth.login()">Login</a>
+    <a mat-button color="secondary" (click)="auth.login()" id="login">Login</a>
   }
 </mat-toolbar>
 <div class="content" role="main">

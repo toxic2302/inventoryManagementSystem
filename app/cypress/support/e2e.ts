@@ -30,7 +30,6 @@ beforeEach(() => {
   )
 })
 
-afterEach(() => {
-  cy.visit('/')
+/*afterEach(() => {
   cy.get('#logout').click()
-})
+})*/
