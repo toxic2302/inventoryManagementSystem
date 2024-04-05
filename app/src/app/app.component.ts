@@ -2,14 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {MatButtonModule} from "@angular/material/button";
 import {MatToolbar} from "@angular/material/toolbar";
-import {MatMenuItem} from "@angular/material/menu";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {User} from "./model/user";
 import {AuthService} from "./services/auth.service";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MatButtonModule, RouterOutlet, MatToolbar, RouterLink, MatMenuItem],
+  imports: [MatButtonModule, RouterOutlet, MatToolbar, RouterLink, MatMenuItem, MatMenu, MatMenuTrigger, MatIcon],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

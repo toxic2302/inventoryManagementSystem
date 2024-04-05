@@ -32,6 +32,6 @@ build/
 ### VS Code ###
 .vscode/
 
-*.env
+.okta.env
 /app/node/
 /src/main/resources/application-dev.properties

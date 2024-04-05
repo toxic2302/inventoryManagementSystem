@@ -10,9 +10,9 @@
     <div class="alert alert-{{feedback.type}}">{{ feedback.message }}</div>
   }
   <table mat-table [dataSource]="items" id="inventoryTable">
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{ item.id }} </mat-cell>
+    <ng-container matColumnDef="brand">
+      <mat-header-cell *matHeaderCellDef> Brand </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.brand }} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>

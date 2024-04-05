@@ -6,6 +6,8 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
 import {Item} from "../model/item";
+import {AuthService} from "../services/auth.service";
+import {User} from "../model/user";
 
 @Component({
   selector: 'app-inventory',
@@ -18,13 +20,18 @@ export class InventoryComponent {
   title = 'Inventory';
   loading = true;
   items: Item[] = [];
-  displayedColumns = ['id', 'name', 'description', 'actions'];
+  displayedColumns = ['brand', 'name', 'description', 'actions'];
   feedback: any = {};
+  user!: User;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public auth: AuthService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.loading = true;
+
+    await this.auth.isAuthenticated();
+    this.auth.getUser().subscribe(data => this.user = data);
+
     this.http.get<Item[]>('api/items').subscribe((data: Item[]) => {
       this.items = data;
       this.loading = false;

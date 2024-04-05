@@ -19,6 +19,10 @@
       </mat-form-field>
     }
     <mat-form-field class="full-width">
+      <mat-label>Brand</mat-label>
+      <input matInput [(ngModel)]="item.brand" id="brand" name="brand" placeholder="Brand" required>
+    </mat-form-field>
+    <mat-form-field class="full-width">
       <mat-label>Name</mat-label>
       <input matInput [(ngModel)]="item.name" id="name" name="name" placeholder="Name" required>
     </mat-form-field>

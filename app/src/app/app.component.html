@@ -21,10 +21,23 @@
     </svg>
   </a>
   @if (user) {
-    <a mat-button color="secondary" (click)="auth.logout()" id="logout">Logout</a>
+    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <img [src]="user.picture" class="rounded-circle" style="width: 150px;" alt="Avatar" />
+    </button>
   } @else {
     <a mat-button color="secondary" (click)="auth.login()" id="login">Login</a>
   }
+
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon fontIcon="home"></mat-icon>
+      <span>Settings</span>
+    </button>
+    <button mat-menu-item (click)="auth.logout()" id="logout">
+      <mat-icon fontIcon="user"></mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>
 <div class="content" role="main">
   <router-outlet></router-outlet>
