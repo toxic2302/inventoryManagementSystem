@@ -1,4 +1,4 @@
-package de.toxic2302.inventorymanagementsystem.config;
+package de.toxic2302.inventorymanagementsystem.base.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

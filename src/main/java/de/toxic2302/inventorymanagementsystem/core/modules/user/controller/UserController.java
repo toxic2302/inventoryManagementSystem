@@ -1,5 +1,6 @@
-package de.toxic2302.inventorymanagementsystem.controller;
+package de.toxic2302.inventorymanagementsystem.core.modules.user.controller;
 
+import de.toxic2302.inventorymanagementsystem.core.modules.user.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,9 +21,11 @@ import static java.util.Map.of;
 public class UserController {
 
     private final ClientRegistration registration;
+    private final UserService userService;
 
-    public UserController(ClientRegistrationRepository registrations) {
+    public UserController(ClientRegistrationRepository registrations, UserService userService) {
         this.registration = registrations.findByRegistrationId("okta");
+        this.userService = userService;
     }
 
     @GetMapping("/api/user")
@@ -30,6 +33,7 @@ public class UserController {
         if (user == null) {
             return new ResponseEntity<>("", HttpStatus.OK);
         } else {
+            userService.saveOrUpdate(user);
             return ResponseEntity.ok().body(user.getAttributes());
         }
     }
