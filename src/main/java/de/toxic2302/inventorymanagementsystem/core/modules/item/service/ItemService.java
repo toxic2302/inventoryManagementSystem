@@ -29,7 +29,7 @@ public class ItemService {
     }
 
     public Collection<ItemDto> getAllItemsByUser(String userid) {
-        return itemMapper.toDtoCollection(itemRepository.findAllByUserId(UUID.fromString(userid)));
+        return itemMapper.toDtoCollection(itemRepository.findAllByUserId(Long.valueOf(userid)));
     }
 
     public Optional<ItemDto> getItemById(UUID itemId) {
