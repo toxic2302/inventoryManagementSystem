@@ -1,7 +1,9 @@
 package de.toxic2302.inventorymanagementsystem.core.modules.item.controller;
 
+import de.toxic2302.inventorymanagementsystem.base.authentication.AuthenticationService;
 import de.toxic2302.inventorymanagementsystem.core.modules.item.dto.ItemDto;
 import de.toxic2302.inventorymanagementsystem.core.modules.item.service.ItemService;
+import de.toxic2302.inventorymanagementsystem.core.modules.user.service.UserService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,22 +27,26 @@ public class ItemController {
     // ---- Globales ----
     private final Logger log = LoggerFactory.getLogger(ItemController.class);
     private final ItemService itemService;
+    private final AuthenticationService authenticatedUserService;
+    private final UserService userService;
 
     // ---- Constructor ----
-    public ItemController(ItemService itemService) {
+    public ItemController(ItemService itemService, AuthenticationService authenticatedUserService, UserService userService) {
         this.itemService = itemService;
+        this.authenticatedUserService = authenticatedUserService;
+      this.userService = userService;
     }
 
     // ---- Functions ----
     @GetMapping("/items")
-    Collection<ItemDto> items(@AuthenticationPrincipal OidcUser user) {
-        return itemService.getAllItems();
+    Collection<ItemDto> items() {
+        return itemService.getAllItems(userService.getCurrentUser());
     }
 
-    @GetMapping("/items/{userId}")
+    /*@GetMapping("/items/{userId}")
     Collection<ItemDto> itemsByUserId(@PathVariable String userId, @AuthenticationPrincipal OidcUser user) {
         return itemService.getAllItemsByUser(userId);
-    }
+    }*/
 
     @GetMapping("/item/{id}")
     ResponseEntity<?> getItem(@PathVariable UUID id) {

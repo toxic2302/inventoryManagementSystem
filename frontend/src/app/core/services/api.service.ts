@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Product } from '../models/Product';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+import {Item} from '../models/Item';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,32 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  /*getInventory(entry: CoffeeListEntry): Observable<CoffeeListEntry> {
-    return this.http.post<CoffeeListEntry>(`${environment.api.serverUrl}/api/inventory`, entry);
-  }*/
-
-  getProductsMini() {
-    return fetch('/assets/products.json').then(value => value.json());
+  createInventoryItem(entry: Item): Observable<Item> {
+    return this.http.post<Item>(`${environment.api.serverUrl}/api/items`, entry);
   }
+
+  updateInventoryItem(id: string, updateEntry: Item): Observable<Item> {
+    return this.http.post<Item>(`${environment.api.serverUrl}/api/items/${id}`, updateEntry)
+  }
+
+  deleteInventoryItem(uuid: string) {
+    return this.http.delete(`${environment.api.serverUrl}/api/items/${uuid}`);
+  }
+
+  getInventoryItemById(id: string | null): Observable<Item> {
+    return this.http.get<Item>(`${environment.api.serverUrl}/api/items/${id}`);
+  }
+
+  /*getCoffeeList(page?: number, size?: number): Observable<Page> {
+    //TODO 19.12.24 floriankolb: eventuell schöner machen
+    if (page !== undefined || size !== undefined) {
+      return this.http.get<Page>(`${environment.api.serverUrl}/api/items`, {
+        params: { page: page!, size: size! }
+      });
+    } else {
+      return this.http.get<Page>(`${environment.api.serverUrl}/api/items`, {
+        params: { size: 2 }
+      });
+    }
+  }*/
 }
