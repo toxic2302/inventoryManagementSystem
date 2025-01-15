@@ -1,26 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Ripple } from 'primeng/ripple';
-import { Menubar } from 'primeng/menubar';
-import { Badge } from 'primeng/badge';
-import { Avatar } from 'primeng/avatar';
-import { NgClass, NgIf } from '@angular/common';
-import { MenuItem } from 'primeng/api';
-import { InputText } from 'primeng/inputtext';
-import { RouterLink } from '@angular/router';
-import { Image } from 'primeng/image';
+import {Menubar} from 'primeng/menubar';
+import {MenuItem, PrimeTemplate} from 'primeng/api';
+import {RouterLink, RouterLinkActive} from '@angular/router';
+import {AsyncPipe, NgIf, NgOptimizedImage} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Avatar} from 'primeng/avatar';
+import {Button} from 'primeng/button';
+import {AuthService} from '@auth0/auth0-angular';
+import {StyleClass} from 'primeng/styleclass';
 
 @Component({
   selector: 'ims-navbar',
   imports: [
     Ripple,
     Menubar,
-    Badge,
-    Avatar,
-    NgClass,
-    NgIf,
-    InputText,
+    PrimeTemplate,
     RouterLink,
-    Image
+    NgOptimizedImage,
+    RouterLinkActive,
+    FormsModule,
+    NgIf,
+    Avatar,
+    Button,
+    AsyncPipe,
+    StyleClass
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
@@ -28,18 +32,20 @@ import { Image } from 'primeng/image';
 export class NavbarComponent implements OnInit {
   items: MenuItem[] | undefined;
 
+  constructor(public auth: AuthService) { }
+
   ngOnInit() {
     this.items = [
       {
         label: 'Home',
         icon: 'pi pi-home',
-        route: '/'
+        routerLink: '/home'
       },
       {
         label: 'Inventory',
-        icon: 'pi pi-item',
-        route: '/inventory'
-      },
+        icon: 'pi pi-warehouse',
+        routerLink: '/inventory'
+      }
     ];
   }
 }
