@@ -8,7 +8,6 @@ import {FormsModule} from '@angular/forms';
 import {Avatar} from 'primeng/avatar';
 import {Button} from 'primeng/button';
 import {AuthService} from '@auth0/auth0-angular';
-import {StyleClass} from 'primeng/styleclass';
 
 @Component({
   selector: 'ims-navbar',
@@ -23,8 +22,7 @@ import {StyleClass} from 'primeng/styleclass';
     NgIf,
     Avatar,
     Button,
-    AsyncPipe,
-    StyleClass
+    AsyncPipe
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'

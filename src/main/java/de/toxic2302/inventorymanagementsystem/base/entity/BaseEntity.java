@@ -1,4 +1,4 @@
-package de.toxic2302.inventorymanagementsystem.base;
+package de.toxic2302.inventorymanagementsystem.base.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

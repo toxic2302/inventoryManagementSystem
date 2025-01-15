@@ -5,31 +5,29 @@ import { Rating } from 'primeng/rating';
 import { Tag } from 'primeng/tag';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../core/services/api.service';
-import { Product } from '../core/models/Product';
-import { CurrencyPipe } from '@angular/common';
+import { AsyncPipe, CurrencyPipe, JsonPipe } from '@angular/common';
+import { Item } from '../core/models/Item';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ims-inventory',
   imports: [
     TableModule,
     Button,
-    Rating,
-    Tag,
     FormsModule,
-    CurrencyPipe
+    AsyncPipe,
+    JsonPipe
   ],
   templateUrl: './inventory.component.html',
   styleUrl: './inventory.component.scss'
 })
 export class InventoryComponent implements OnInit {
-  products!: Product[];
+  items$!: Observable<Item[]>;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-   this.apiService.getProductsMini().then((products: Product[]) => {
-     this.products = products;
-   });
+   this.items$ = this.apiService.getInventoryItems();
   }
 
   // @ts-ignore
