@@ -35,3 +35,4 @@ build/
 .okta.env
 /app/node/
 /src/main/resources/application-dev.properties
+/src/main/resources/public

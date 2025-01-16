@@ -51,11 +51,13 @@ public class ItemController {
     }
 
     @PostMapping("/item")
-    ResponseEntity<ItemDto> createItem(@Valid @RequestBody ItemDto item, @AuthenticationPrincipal OAuth2User user) throws URISyntaxException {
+    @ResponseStatus(HttpStatus.CREATED)
+    ResponseEntity<ItemDto> createItem(@Valid @RequestBody ItemDto item) throws URISyntaxException {
         log.info("Request to create item: {}", item);
 
         final ItemDto itemDto = itemService.saveItem(item);
-        return ResponseEntity.created(new URI("/api/item/" + itemDto.getId())).body(itemDto);
+        //TODO 17.01.25 floriankolb: rest standard neue uri zurück geben
+        return ResponseEntity.created(new URI("/api/item/" + itemDto.id())).body(itemDto);
     }
 
     @PostMapping("/item/{id}")

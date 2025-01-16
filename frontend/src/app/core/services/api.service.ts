@@ -12,7 +12,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   createInventoryItem(entry: Item): Observable<Item> {
-    return this.http.post<Item>(`${environment.api.serverUrl}/api/items`, entry);
+    return this.http.post<Item>(`${environment.api.serverUrl}/api/item`, entry);
   }
 
   updateInventoryItem(id: string, updateEntry: Item): Observable<Item> {

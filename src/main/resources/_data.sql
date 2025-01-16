@@ -1,0 +1,1 @@
+INSERT INTO users (Id, created_at, created_by, modified_at, modified_by, Active, Email, first_name, last_name, Username) VALUES (0xEE66EB0695FB4629BA2792141CAA1D69, NOW(), 'auth0|65df2bf17efd4605e0280ae8', NOW(), 'auth0|65df2bf17efd4605e0280ae8', true, 'johndoe@example.com', 'John', 'Doe', 'eM42qhwziynnxByY5gTLXyTc9s512cB4@clients') ON DUPLICATE KEY UPDATE Id = Id;

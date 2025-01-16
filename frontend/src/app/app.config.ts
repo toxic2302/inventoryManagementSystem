@@ -25,7 +25,7 @@ export const appConfig: ApplicationConfig = {
       clientId: environment.auth0.clientId,
       authorizationParams: {
         redirect_uri: window.location.origin,
-        /*audience: 'https://api.sctools.swiss-commerce.io',*/
+        audience: 'https://inventarbuddy.de/api',
       },
 
       // Specify configuration for the interceptor
